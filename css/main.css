@@ -22,7 +22,10 @@ body {
 }
 #maincontainer{
 	background:white;
+  margin: auto;
+  text-align: center;
 }
+
 
     
 
@@ -43,6 +46,8 @@ text {
      		}
 #title{
 	letter-spacing: 1vw;
+  text-align: center;
+  margin: auto;
 }
 input[type="text"]
 {
