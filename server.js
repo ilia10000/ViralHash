@@ -9,9 +9,9 @@ server.listen(8080);
 
 app.use(express.static('public'));
 
-require('./routes')(app, io);
+//require('./routes')(app, io);
 
-var watchList = ['#trump', '#obama', '#bloomberg'];
+var watchList = ['bieber'];
 
 var T = new Twit({
     consumer_key: 'azjoBeKn5omc0B49k6PcGC8aR',
@@ -21,18 +21,28 @@ var T = new Twit({
 });
 
 
-
+var tweets = [];
+var counter = 0;
 
 io.sockets.on('connection', function (socket) {
 
 var stream = T.stream('statuses/filter', { track: watchList });
 
+
 stream.on('tweet', function (tweet) {
+
+    if (tweets.indexOf(tweet.text) === -1) {
+      tweets.push(tweet.text);
+      console.log( tweet.text );
+    }
 
     io.sockets.emit('stream', tweet);
 
 
   }); 
 });
+
+
+
 
 

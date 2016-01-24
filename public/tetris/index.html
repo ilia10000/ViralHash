@@ -13,8 +13,6 @@
   <script>
 
         var socket = io.connect('http://localhost:8080');
-        
-
 
   </script>
 </head>
@@ -31,6 +29,9 @@
     <canvas id="canvas">
       Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
     </canvas>
+  </div>
+
+  <div class="tweets" style="overflow-y: scroll;">
   </div>
 
   <script src="stats.js"></script>
@@ -220,7 +221,10 @@
 
     function tweet_move(tweet) {
 
-      //console.log( tweet );
+      console.log( tweet );
+      
+      
+
 
       var command = filter_text(name, tweet.text);
 
@@ -237,6 +241,8 @@
         }
 
     }
+
+    $('.tweets').append( tweet.text );
   }
 
     //-------------------------------------------------------------------------
