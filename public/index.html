@@ -57,7 +57,7 @@
     <div class="jumbotron" id="mainjumbo">
       <div class="container" id="maincontainer">
         <text id="title">VIRAL#ASH</text><br>
-        <text id="hashin">#<input type="text" name="keyword" id="hash" autofocus placeholder="hashtag" onkeydown="if (event.keyCode == 13) {window.location.href = 'tetris/index.html'; return false; }"></text>
+        <text id="hashin">#<input type="text" name="keyword" id="hash" autofocus placeholder="hashtag" onkeydown="if (event.keyCode == 13) {window.location.href = 'tetris/'.concat(this.value).concat('.html'); return false; }"></text>
         <!-- <div><a class="btn btn-primary btn-lg" id="btn-custom" href="#" role="button">Get Trending &raquo;</a></div> -->
       </div>
     </div>
