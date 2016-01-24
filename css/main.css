@@ -40,6 +40,7 @@ text {
     	font-family: 'Calibri', sans-serif;
     	font-size: 10vw;
     	letter-spacing: 1rem;
+      font-style: italic;
 
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
@@ -54,6 +55,7 @@ input[type="text"]
     background: transparent;
     border: none;
     outline: none;
+
 }
 
 
@@ -70,7 +72,7 @@ input[type="text"]
     -webkit-border-radius: 1vw;
        -moz-border-radius: 1vw;
             border-radius: 1vw;
-
+    
 
     /* make it glow! */
     
