@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
   <script src="../js/filter.js"></script>
   <script type="text/javascript">
-    var name = "#trump";
+    var name = "#uwhacks";
   </script>
   <script>
 
@@ -21,20 +21,32 @@
 
   <div id="tetris">
     <div id="menu">
-      <p id="start"><a href="javascript:play();">Press Space to Play.</a></p>
-      <p><canvas id="upcoming"></canvas></p>
-      <p>score <span id="score">00000</span></p>
-      <p>rows <span id="rows">0</span></p>
+      <!-- <h3 style="text-align: center;" style="font-family: calibri; font-color: #555">VIRAL#ASH</h3> -->
+      <p> Instructions: </p>
+      <p style="font-size: 0.7em"> Tweet #uwhacks and a word </p>
+      <p style="font-size: 0.7em"> word starts with <b>L</b> = <b>LEFT</b></p>
+      <p style="font-size: 0.7em"> word starts with <b>R</b> = <b>RIGHT</b></p> 
+      <p style="font-size: 0.7em"> word starts with <b>D</b> = <b>DOWN</b></p> 
+      <p style="font-size: 0.7em"> word starts with <b>U</b> = <b>ROTATE</b></p>
+      <p style="font-size: 0.7em"> Example: #uwhacks rocks == Right </p>  
+
+      <div id="start" class="play_btn"><a href="javascript:play();">Let's Play!</a></div>
+      
+      <p style="visibility: hidden"><canvas id="upcoming"></canvas></p>
+      <p style="visibility: hidden">score <span id="score">00000</span></p>
+      <p style="visibility: hidden">rows <span id="rows">0</span></p>
     </div>
     <canvas id="canvas">
       Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
     </canvas>
   </div>
 
-  <div class="tweets" style="overflow-y: scroll;">
+  <div class="tweets" style="overflow-y: scroll; height: 600px;"><h2> The #uwhacks twitter feed: </h2>
   </div>
 
-  <script src="stats.js"></script>
+  <div style="clear: both;"></div>
+
+  <script src="stats.js"  ></script>
   <script>
 
     //-------------------------------------------------------------------------
@@ -234,7 +246,7 @@
         switch(command) {
           case "L":   actions.push(DIR.LEFT);  handled = true; break;
           case "R":  actions.push(DIR.RIGHT); handled = true; break;
-          case "R": actions.push(DIR.UP); handled = true; break;
+          case "U": actions.push(DIR.UP); handled = true; break;
           case "D":   actions.push(DIR.DOWN);  handled = true; break;
           //case KEY.ESC:    lose();                  handled = true; break;
           default: actions.push(DIR.UP);  handled = true; break;
@@ -242,15 +254,15 @@
 
     }
 
-    $('.tweets').append( tweet.text );
+    $('.tweets').prepend( "<h2> @" + tweet.user.screen_name  + "</h2>" + "<p>" + tweet.text + "</p>" );
   }
 
     //-------------------------------------------------------------------------
     // GAME LOGIC
     //-------------------------------------------------------------------------
 
-    function play() { hide('start'); reset();          playing = true;  }
-    function lose() { show('start'); setVisualScore(); playing = false; }
+    function play() { reset();          playing = true;  }
+    function lose() {  setVisualScore(); playing = false; }
 
     function setVisualScore(n)      { vscore = n || score; invalidateScore(); }
     function setScore(n)            { score = n; setVisualScore(n);  }

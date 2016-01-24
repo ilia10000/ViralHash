@@ -11,7 +11,7 @@ app.use(express.static('public'));
 
 //require('./routes')(app, io);
 
-var watchList = ['bieber'];
+var watchList = ['#uwhacks'];
 
 var T = new Twit({
     consumer_key: 'azjoBeKn5omc0B49k6PcGC8aR',
@@ -32,11 +32,16 @@ var stream = T.stream('statuses/filter', { track: watchList });
 stream.on('tweet', function (tweet) {
 
     if (tweets.indexOf(tweet.text) === -1) {
+
       tweets.push(tweet.text);
-      console.log( tweet.text );
+      console.log( tweet.user.screen_name );
+      io.sockets.emit('stream', tweet);
+      
     }
 
-    io.sockets.emit('stream', tweet);
+    
+
+    
 
 
   }); 
